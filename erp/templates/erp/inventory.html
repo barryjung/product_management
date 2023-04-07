@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">코드</th>
+                <th scope="col">전체 입고량</th>
+                <th scope="col">전체 입고가격</th>
+                <th scope="col">전체 출고량</th>
+                <th scope="col">전체 출고가격</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inventory in inventories %}
+            <tr>
+                <th scope="row">{{inventory.code}}</th>
+                <td>{{inventory.total_inbound_quantity}}</td>
+                <td>{{inventory.total_inbound_ammount}}</td>
+                <td>{{inventory.total_outbound_quantity}}</td>
+                <td>{{inventory.total_outbound_ammount}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

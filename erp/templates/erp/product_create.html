@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+상품등록
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h2 class="title-center"> 상품등록 </h2>
+    <form class="form-area" method="post">
+        {% csrf_token %}
+        {{form}}
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+        <hr>
+        <div style="float: right">
+            <button type="submit" class="btn btn-primary">상품등록</button>
+            <a href="/product_list" class="btn btn-secondary">홈으로</a>
+        </div>
+    </form>
+
+
+</div>
+{% endblock %}
