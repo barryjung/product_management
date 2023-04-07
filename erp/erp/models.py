@@ -27,6 +27,14 @@ class Product(models.Model):
 
     def __str__(self):
         return self.code
+    
+    def save(self, *args, **kwargs):
+        if not self.id: 
+            super().save(self, *args, **kwargs)
+            add_inventory = Invetory(code=self)
+            add_inventory.save()
+        else:
+            super().save(self, *args, **kwargs)
 
 
 class Inbound(models.Model):

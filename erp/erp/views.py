@@ -90,20 +90,12 @@ def inventory(request):
         outbound_q_sum = sum([x.quantity for x in outbounds])
         outbound_a_sum = sum([x.ammount for x in outbounds])
 
-        if not Invetory.objects.filter(code=product).exists():
-            inventory = Invetory(code=product)
-            inventory.total_inbound_quantity = inbound_q_sum
-            inventory.total_inbound_ammount = inbound_a_sum
-            inventory.total_outbound_quantity = outbound_q_sum
-            inventory.total_outbound_ammount = outbound_a_sum
-            inventory.save()
-        else:
-            inventory = Invetory.objects.get(code=product)
-            inventory.total_inbound_quantity = inbound_q_sum
-            inventory.total_inbound_ammount = inbound_a_sum
-            inventory.total_outbound_quantity = outbound_q_sum
-            inventory.total_outbound_ammount = outbound_a_sum
-            inventory.save()
+        inventory = Invetory.objects.get(code=product)
+        inventory.total_inbound_quantity = inbound_q_sum
+        inventory.total_inbound_ammount = inbound_a_sum
+        inventory.total_outbound_quantity = outbound_q_sum
+        inventory.total_outbound_ammount = outbound_a_sum
+        inventory.save()
     
     inventories = Invetory.objects.all()
     return render(request, 'erp/inventory.html', {'inventories':inventories})
