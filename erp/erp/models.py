@@ -34,7 +34,7 @@ class Product(models.Model):
             add_inventory = Invetory(code=self)
             add_inventory.save()
         else:
-            super().save(self, *args, **kwargs)
+            super().save(*args, **kwargs)
 
 
 class Inbound(models.Model):
